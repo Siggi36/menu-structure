@@ -9,7 +9,7 @@ interface Props {
     quad: boolean,
     basepw: boolean,
     masterpw: boolean,
-    children?: [{}],
+    children: boolean,
     key: string,
     exposedKey: string,
     text: string,
@@ -26,46 +26,46 @@ const MenuItem: React.FC<Props> = ({ active, basepw, custom, key, masterpw, expo
                     Parent: {parent}
                 </p>
                 <div className="grid grid-cols-3">
-                    <p>
+                    <div>
                         <label>
                             Premium:
                             <input type="checkbox" disabled checked={premium}></input>
                         </label>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label>
                             Custom:
                             <input type="checkbox" disabled checked={custom}></input>
                         </label>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label>
                             Active:
                             <input type="checkbox" disabled checked={active}></input>
                         </label>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label>
                             Quad:
                             <input type="checkbox" disabled checked={quad}></input>
                         </label>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label>
                             Basepw:
                             <input type="checkbox" disabled checked={basepw}></input>
                         </label>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <label>
                             Masterpw:
                             <input type="checkbox" disabled checked={masterpw}></input>
                         </label>
-                    </p>
+                    </div>
                 </div>
 
                 <p>
-                    Children: {children}
+                    Children: <input type="checkbox" disabled checked={children}></input>
                 </p>
                 <p>
                     Key: {exposedKey}

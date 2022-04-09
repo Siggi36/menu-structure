@@ -57,7 +57,6 @@ const MenuStructureRoot: React.FC = () => {
                     setDisplayedItems(childrenOfClickedMenuObj);
                     //console.log("current display:")
                     //console.log(displayedItems);
-
                     // })
                 }
             }
@@ -117,6 +116,14 @@ const MenuStructureRoot: React.FC = () => {
         backButton = <button className="bg-grey shadow-md rounded p-2 float-right" onClick={onClickBack}> Zurück </button>;
     }
 
+    const checkIfChildrenArePresent = (children: MenuStructureInterface[] | string): boolean => {
+        let hasChildren = false;
+        if (children instanceof Array && children.length !== 0) {
+            hasChildren = true;
+        }
+        return hasChildren;
+    }
+
     return (
         <div className="m-2">
             {backButton}
@@ -126,7 +133,7 @@ const MenuStructureRoot: React.FC = () => {
             <div className="grid grid-cols-2" >
                 <div className="inline-flex justify-between">
                     {displayedItems.map((data) => <MenuItem onSelectMenuItem={onSelectMenuItem} key={data.key} exposedKey={data.key} name={data.name} parent={data.parent} premium={data.premium} custom={data.custom} active={data.active}
-                        quad={data.quad} basepw={data.basepw} masterpw={data.masterpw} text={data.text} ></MenuItem>
+                        quad={data.quad} basepw={data.basepw} children={checkIfChildrenArePresent(data.children)} masterpw={data.masterpw} text={data.text} ></MenuItem>
                     )}
                 </div>
             </div>
