@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Interface for the definition of the props that this component receives 
 interface Props {
     name: string,
     parent: string,
@@ -16,66 +17,66 @@ interface Props {
     onSelectMenuItem: (key: string) => void,
 }
 
+// HTML and CSS. Box that displays the menuItem data
 const MenuItem: React.FC<Props> = ({ active, basepw, custom, key, masterpw, exposedKey, name, onSelectMenuItem, parent, premium, quad, text, children }) => {
 
     return (
-        <div>
-            <div className='border-2 m-2 text-center' onClick={() => onSelectMenuItem(exposedKey)}>
-                <span className='font-semibold'>{name}</span>
-                <p>
-                    Parent: {parent}
-                </p>
-                <div className="grid grid-cols-3">
+        <div className="border-2 rounded-lg border-tailwind-blue m-2 text-center bg-tailwind-blue text-tailwind-text">
+            <div className="p-2" >
+                <div className={children ? "cursor-pointer" : ""} onClick={() => onSelectMenuItem(exposedKey)}>
+                    <span className='font-bold'>{name}</span>
+                    <hr className='mb-2' />
                     <div>
-                        <label>
-                            Premium:
+                        <span className='font-medium'> Vorheriger Menu Id:</span> {parent}
+                    </div>
+                    <div>
+                        <span className='font-medium'> Aktuelle Menu Id:</span> {exposedKey}
+                    </div>
+                    <hr className='mb-2' />
+                    <div>
+                        <span className='font-medium'>Eigenschaften:</span>
+                    </div>
+                    <div className="grid grid-cols-2">
+                        <div>
+                            <label className='font-medium'> Premium: </label>
                             <input type="checkbox" disabled checked={premium}></input>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Custom:
+
+                        </div>
+                        <div>
+                            <label className='font-medium'> Custom: </label>
                             <input type="checkbox" disabled checked={custom}></input>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Active:
+
+                        </div>
+                        <div>
+                            <label className='font-medium'> Active: </label>
                             <input type="checkbox" disabled checked={active}></input>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Quad:
+
+                        </div>
+                        <div>
+                            <label className='font-medium'> Quad: </label>
                             <input type="checkbox" disabled checked={quad}></input>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Basepw:
+
+                        </div>
+                        <div>
+                            <label className='font-medium'> Basepw: </label>
                             <input type="checkbox" disabled checked={basepw}></input>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Masterpw:
+
+                        </div>
+                        <div>
+                            <label className='font-medium'> Masterpw: </label>
                             <input type="checkbox" disabled checked={masterpw}></input>
-                        </label>
+                        </div>
                     </div>
+                    <hr className='mb-2' />
+                    {
+                        children ? <div>Weitere Menüpunkte verfügbar</div> : <div></div>
+                    }
                 </div>
-
-                <p>
-                    Children: <input type="checkbox" disabled checked={children}></input>
-                </p>
-                <p>
-                    Key: {exposedKey}
-                </p>
-                <p>
-                    <a href={text}>Text: Link</a>
-
-                </p>
+                <div>
+                    <span className='font-medium'>Text: </span> <a className='underline' href={text}>https://www.rk-rose-krieger.com</a>
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 
